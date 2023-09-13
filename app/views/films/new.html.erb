@@ -1,0 +1,13 @@
+<%= form_with model: @film do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :year %>
+  <%= f.number_field :year %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+  <%= f.label :image %>
+  <%= f.text_field :rating %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Liste des films", films_path() %>

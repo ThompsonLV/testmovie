@@ -10,8 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_12_161125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "actors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "casts", force: :cascade do |t|
+    t.bigint "actor_id", null: false
+    t.bigint "film_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_casts_on_actor_id"
+    t.index ["film_id"], name: "index_casts_on_film_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.bigint "genre_id", null: false
+    t.bigint "film_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_categories_on_film_id"
+    t.index ["genre_id"], name: "index_categories_on_genre_id"
+  end
+
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.integer "year"
+    t.integer "rating"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "casts", "actors"
+  add_foreign_key "casts", "films"
+  add_foreign_key "categories", "films"
+  add_foreign_key "categories", "genres"
 end
