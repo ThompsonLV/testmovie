@@ -16,6 +16,8 @@ p '--------------------'
 Movie.destroy_all
 Genre.destroy_all
 Actor.destroy_all
+Cast.destroy_all
+Category.destroy_all
 
 p 'Création des données'
 p '--------------------'
@@ -32,20 +34,18 @@ movies.take(50).each do |movie|
   )
 
   movie["actors"].each do |actor|
-    if Actor.find_by(first_name: actor).nil?
-      Actor.create!(first_name: actor)
-      # Cast.create!(movie: new_movie, actor: Actor.find_by(first_name: actor))
+    if Actor.find_by(fullname: actor).nil?
+      Actor.create!(fullname: actor)
+      Cast.create!(movie: new_movie, actor: Actor.find_by(fullname: actor))
     end
   end
 
   movie["genre"].each do |genre|
     if Genre.find_by(content: genre).nil?
       Genre.create!(content: genre)
-      # Category.create!(movie: new_movie, genre: Genre.find_by(content: genre))
+      Category.create!(movie: new_movie, genre: Genre.find_by(content: genre))
     end
   end
-
-
 end
 
 p 'Terminé'

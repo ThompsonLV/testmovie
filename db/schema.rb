@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_18_142235) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_18_204518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "actors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "fullname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   create_table "casts", force: :cascade do |t|
@@ -35,8 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_142235) do
     t.bigint "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_categories_on_movie_id"
     t.index ["genre_id"], name: "index_categories_on_genre_id"
+    t.index ["movie_id"], name: "index_categories_on_movie_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_142235) do
   end
 
   add_foreign_key "casts", "actors"
-  add_foreign_key "casts", "movies", column: "movie_id"
+  add_foreign_key "casts", "movies"
   add_foreign_key "categories", "genres"
-  add_foreign_key "categories", "movies", column: "movie_id"
+  add_foreign_key "categories", "movies"
 end

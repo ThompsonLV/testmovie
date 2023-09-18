@@ -1,5 +1,5 @@
 class RenamemoviesToMovies < ActiveRecord::Migration[7.0]
   def change
-    rename_table :movies, :movies
+    rename_table :films, :movies
   end
 end
