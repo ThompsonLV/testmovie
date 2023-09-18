@@ -25,7 +25,9 @@ url = "https://gist.githubusercontent.com/alexandremeunier/49533eebe2ec93b14d32b
 movies_serialized = URI.open(url).read
 movies = JSON.parse(movies_serialized)
 
-movies.take(50).each do |movie|
+index = 0
+
+movies.take(100).each do |movie|
   new_movie = Movie.create!(
     title: movie['title'],
     year: movie['year'],
@@ -49,7 +51,10 @@ movies.take(50).each do |movie|
     end
     Category.create!(movie: new_movie, genre: Genre.find_by(content: genre))
   end
+  index += 1
+  p index
 end
 
+p '--------------------'
 p 'Terminé'
 p '--------------------'
