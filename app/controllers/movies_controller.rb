@@ -1,11 +1,11 @@
 class MoviesController < ApplicationController
+  before_action :set_movie, only: %i[show destroy]
 
   def index
     @movies = Movie.all
   end
 
   def show
-    @movie = Movie.find(params[:id])
     @cast = Cast.new
     @category = Category.new
   end
@@ -24,7 +24,6 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_path, status: :see_other
   end
@@ -35,4 +34,7 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(:title, :year, :rating, :image, :genre)
   end
 
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 end

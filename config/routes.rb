@@ -5,8 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: "movies#index"
 
-  resources :movies, only: %i[new create show index destroy] do
-    resources :casts, only: %i[new show]
-    resources :categories, only: %i[new show]
-  end
+  resources :movies, only: %i[new create show index destroy]
 end

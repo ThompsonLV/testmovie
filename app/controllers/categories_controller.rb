@@ -19,5 +19,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:genre_id, :movie_id)
   end
-
 end

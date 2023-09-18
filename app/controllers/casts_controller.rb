@@ -19,5 +19,4 @@ class CastsController < ApplicationController
   def cast_params
     params.require(:cast).permit(:actor_id, :movie_id)
   end
-
 end

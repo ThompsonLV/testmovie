@@ -13,7 +13,7 @@ p '--------------------'
 p 'Destruction des données'
 p '--------------------'
 
-movie.destroy_all
+Movie.destroy_all
 Genre.destroy_all
 Actor.destroy_all
 
@@ -24,19 +24,28 @@ movies_serialized = URI.open(url).read
 movies = JSON.parse(movies_serialized)
 
 movies.take(50).each do |movie|
-  movie.create(title: movie['title'], year: movie['year'], rating: movie['rating'], image: movie['image'])
+  new_movie = Movie.create!(
+    title: movie['title'],
+    year: movie['year'],
+    rating: movie['rating'],
+    image: movie['image']
+  )
 
   movie["actors"].each do |actor|
     if Actor.find_by(first_name: actor).nil?
-      Actor.create(first_name: actor)
+      Actor.create!(first_name: actor)
+      # Cast.create!(movie: new_movie, actor: Actor.find_by(first_name: actor))
     end
   end
 
   movie["genre"].each do |genre|
     if Genre.find_by(content: genre).nil?
-      Genre.create(content: genre)
+      Genre.create!(content: genre)
+      # Category.create!(movie: new_movie, genre: Genre.find_by(content: genre))
     end
   end
+
+
 end
 
 p 'Terminé'
