@@ -32,19 +32,22 @@ movies.take(50).each do |movie|
     rating: movie['rating'],
     image: movie['image']
   )
-
+  i = 0
   movie["actors"].each do |actor|
     if Actor.find_by(fullname: actor).nil?
-      Actor.create!(fullname: actor)
-      Cast.create!(movie: new_movie, actor: Actor.find_by(fullname: actor))
+      actor_avatar_url = movie['actor_facets'][i].split("|").first
+      Actor.create!(fullname: actor, avatar: actor_avatar_url)
+      i += 1
     end
+    Cast.create!(movie: new_movie, actor: Actor.find_by(fullname: actor))
   end
+
 
   movie["genre"].each do |genre|
     if Genre.find_by(content: genre).nil?
       Genre.create!(content: genre)
-      Category.create!(movie: new_movie, genre: Genre.find_by(content: genre))
     end
+    Category.create!(movie: new_movie, genre: Genre.find_by(content: genre))
   end
 end
 

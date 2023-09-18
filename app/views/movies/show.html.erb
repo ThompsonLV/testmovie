@@ -1,13 +1,23 @@
 <div class="container">
-  <h1> <%= @movie.title %> </h1>
-    <p class="card-text"><%= @movie.year %></p>
-    <img src="<%= @movie.image %>" class="card-img-top" alt="">
+  <h1><%= @movie.title %> </h1>
+    <p><%= @movie.year %></p>
+    <div class="card-movie-info">
+      <img src="<%= @movie.image %>" alt="">
+      <div class="movie-genre">
+        <h3>Genres</h3>
+        <% @movie.categories.each do |category| %>
+          <p><%= Genre.find(category.genre_id).content %></p>
+        <% end %>
+      </div>
+    </div>
     <h3>Acteurs</h3>
-    <% @movie.casts.each do |cast| %>
-      <p class="card-text"><%= Actor.find(cast.actor_id).fullname %></p>
-    <% end %>
-    <h3>Genres</h3>
-    <% @movie.categories.each do |category| %>
-      <p class="card-text"><%= Genre.find(category.genre_id).content %></p>
-    <% end %>
+    <div class="avatars">
+      <% @movie.casts.each do |cast| %>
+        <div class="actor">
+          <img src="<%= Actor.find(cast.actor_id).avatar %>" class="avatar-bordered" alt="">
+          <%= Actor.find(cast.actor_id).fullname %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
