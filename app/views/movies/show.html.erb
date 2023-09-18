@@ -1,0 +1,11 @@
+<div class="container">
+  <h1> <%= @movie.title %> </h1>
+  <img src="<%= @movie.image %>" class="card-img-top" alt="">
+    <h5 class="card-title"><%= @movie.title %></h5>
+    <p class="card-text"><%= @movie.year %></p>
+    <p class="card-text">
+      <% @movie.casts.each do |cast| %>
+        <%= cast  %>
+      <% end %>
+    </p>
+</div>
