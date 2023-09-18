@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MovieControllerTest < ActionDispatch::IntegrationTest
+class CastControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -1,4 +1,4 @@
-<%= form_with model: @film do |f| %>
+<%= form_with model: @movie do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :year %>
@@ -10,4 +10,4 @@
   <%= f.submit %>
 <% end %>
 
-<%= link_to "Liste des films", films_path() %>
+<%= link_to "Liste des movies", movies_path() %>

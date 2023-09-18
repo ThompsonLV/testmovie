@@ -13,18 +13,30 @@ p '--------------------'
 p 'Destruction des données'
 p '--------------------'
 
-Film.destroy_all
+movie.destroy_all
+Genre.destroy_all
+Actor.destroy_all
 
 p 'Création des données'
 p '--------------------'
 url = "https://gist.githubusercontent.com/alexandremeunier/49533eebe2ec93b14d32b2333272f9f8/raw/924d89e2236ca6fa2ade7481c91bfbf858c49531/movies.json"
-films_serialized = URI.open(url).read
-films = JSON.parse(films_serialized)
+movies_serialized = URI.open(url).read
+movies = JSON.parse(movies_serialized)
 
-films.take(50).each do |film|
-  Film.create(title: film['title'], year: film['year'], rating: film['rating'], image: film['image'])
-  Genre.create(content: film['genre'])
-  Actor.create(content: film['genre'])
+movies.take(50).each do |movie|
+  movie.create(title: movie['title'], year: movie['year'], rating: movie['rating'], image: movie['image'])
+
+  movie["actors"].each do |actor|
+    if Actor.find_by(first_name: actor).nil?
+      Actor.create(first_name: actor)
+    end
+  end
+
+  movie["genre"].each do |genre|
+    if Genre.find_by(content: genre).nil?
+      Genre.create(content: genre)
+    end
+  end
 end
 
 p 'Terminé'

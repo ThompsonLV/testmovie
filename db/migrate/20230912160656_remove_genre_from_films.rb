@@ -1,5 +1,5 @@
-class RemoveGenreFromFilms < ActiveRecord::Migration[7.0]
+class RemoveGenreFrommovies < ActiveRecord::Migration[7.0]
   def change
-    remove_column :films, :genre
+    remove_column :movies, :genre
   end
 end

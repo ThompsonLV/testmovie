@@ -1,0 +1,19 @@
+<div class="container row">
+
+
+  <h1>Liste des movies</h1>
+  <%= link_to "Ajouter un movie", new_movie_path() %>
+  <% @movies.each do |movie| %>
+    <div class="card" style="width: 18rem;">
+      <img src="<%= movie.image %>" class="card-img-top" alt="">
+      <div class="card-body">
+        <h5 class="card-title"><%= movie.title %></h5>
+        <p class="card-text"><%= movie.year %></p>
+        <%= link_to "Delete",
+          movie_path(movie),
+          data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr ?"}
+        %>
+      </div>
+    </div>
+  <% end %>
+</div>
