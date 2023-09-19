@@ -78,3 +78,5 @@ group :test do
 end
 
 gem "algoliasearch-rails"
+# Gem pour la pagination des films
+gem 'kaminari'

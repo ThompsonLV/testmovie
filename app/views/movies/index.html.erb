@@ -10,6 +10,7 @@
   <%# Recherche Algolia %>
   <%# <input type="text" id="search-input" data-controller="algolia-search" placeholder="Recherche...">
   <div id="hits"></div> %>
+  <%= paginate @movies %>
   <div class="cards">
     <% @movies.each do |movie| %>
       <div class="card-product">
@@ -30,4 +31,5 @@
       </div>
     <% end %>
   </div>
+  <%= paginate @movies %>
 </div>
