@@ -1,6 +1,7 @@
 <div class="container">
   <h1 class="uppercase-text center-text"><%= @movie.title %></h1>
-    <div class="card-movie-info">
+  <div class="card-movie-info">
+    <%= link_to "", movies_path(), class: "btn btn-flat fa-solid fa-arrow-left"%>
     <img src="<%= @movie.image %>" alt="" class="movie-poster">
     <div class="movie-info">
       <div class="movie-short-info">
@@ -26,5 +27,4 @@
       </div>
     </div>
   </div>
-  <%= link_to "Liste des films", movies_path(), class: "btn btn-ghost-dark"%>
 </div>

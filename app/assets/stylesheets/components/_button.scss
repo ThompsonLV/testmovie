@@ -32,16 +32,22 @@
 
 .btn-flat {
   color: white;
+  padding: 0px;
+  padding-top: 10px;
   font-size: 14px;
-  padding: 8px 12px;
   border-radius: 20px;
-  background: #670BFF;
+  background: black;
   transition: background 0.3s ease;
   margin-bottom: 12px;
-  width: 130px;
+  width: 36px;
+  height: 36px;
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
+  background: #454545;
   color: white;
+}
+
+.btn-detail{
+  gap:12px,
 }

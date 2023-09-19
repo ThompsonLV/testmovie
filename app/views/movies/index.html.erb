@@ -26,12 +26,15 @@
         <div class="card-product-infos">
           <h4><%= movie.title %></h4>
           <h2><%= movie.year %></h2>
-          <div class="d-flex flex-column">
-            <%= link_to "Plus de détails", movie_path(movie), class: "btn btn-flat" %>
-            <%= link_to "Supprimer",
+          <div class="d-flex btn-detail">
+            <%= link_to "",
+              movie_path(movie),
+              class: "btn btn-flat fa-solid fa-plus text-center"
+            %>
+            <%= link_to "",
               movie_path(movie),
               data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr de vouloir supprimer le film ?"},
-              class: "btn btn-flat"
+              class: "btn btn-flat fa-solid fa-trash text-center"
             %>
           </div>
         </div>
