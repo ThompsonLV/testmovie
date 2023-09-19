@@ -13,7 +13,7 @@
     <h3>Acteurs</h3>
     <div class="avatars">
       <% @movie.casts.each do |cast| %>
-        <div class="actor">
+        <div class="actor-infos">
           <img src="<%= Actor.find(cast.actor_id).avatar %>" class="avatar-bordered" alt="">
           <%= Actor.find(cast.actor_id).fullname %>
         </div>

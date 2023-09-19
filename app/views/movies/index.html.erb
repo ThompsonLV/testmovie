@@ -5,6 +5,9 @@
   </div>
 </div>
 
+<input type="text" id="search-input" data-controller="algolia-search" placeholder="Recherche...">
+<div id="hits"></div>
+
 <div class="container">
   <div class="cards">
     <% @movies.each do |movie| %>
