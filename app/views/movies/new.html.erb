@@ -1,13 +1,15 @@
-<%= form_with model: @movie do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :year %>
-  <%= f.number_field :year %>
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
-  <%= f.label :image %>
-  <%= f.text_field :rating %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= form_with model: @movie do |f| %>
+    <%= f.label :titre %>
+    <%= f.text_field :title %>
+    <%= f.label :année %>
+    <%= f.number_field :year %>
+    <%= f.label :Notes %>
+    <%= f.number_field :rating %>
+    <%= f.label :"image lien url"%>
+    <%= f.text_field :rating %>
+    <%= f.submit %>
+  <% end %>
 
-<%= link_to "Liste des movies", movies_path() %>
+  <%= link_to "Liste des films", movies_path() %>
+</div>

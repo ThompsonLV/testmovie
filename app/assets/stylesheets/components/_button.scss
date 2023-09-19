@@ -1,4 +1,4 @@
-.btn-ghost {
+.btn-ghost-light {
   color: white;
   border: 1px solid white;
   padding: 8px 24px;
@@ -6,10 +6,42 @@
   font-weight: lighter;
   margin-bottom: 12px;
   transition: 0.3s ease;
+
+  &:hover {
+    filter: blur(1px);
+    color: white;
+    border: 1px solid white;
+  }
 }
 
-.btn-ghost:hover {
-  filter: blur(1px);
+.btn-ghost-dark {
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  margin-bottom: 12px;
+  transition: 0.3s ease;
+
+  &:hover {
+    filter: blur(1px);
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+  }
+}
+
+.btn-flat {
   color: white;
-  border: 1px solid white;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #670BFF;
+  transition: background 0.3s ease;
+  margin-bottom: 12px;
+  width: 130px;
+}
+
+.btn-flat:hover {
+  background: #4D04C4;
+  color: white;
 }

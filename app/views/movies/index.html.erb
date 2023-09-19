@@ -1,26 +1,28 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/39/55/1a/39551a60daaaf779342b3ec0d55abacb.jpg);">
   <div class="container">
     <h1>Liste des films </h1>
-    <%= link_to "Ajouter un film", new_movie_path(), class: "btn btn-ghost" %>
+    <%= link_to "Ajouter un film", new_movie_path(), class: "btn btn-ghost-light" %>
   </div>
 </div>
 
-<input type="text" id="search-input" data-controller="algolia-search" placeholder="Recherche...">
-<div id="hits"></div>
 
 <div class="container">
+  <%# Recherche Algolia %>
+  <%# <input type="text" id="search-input" data-controller="algolia-search" placeholder="Recherche...">
+  <div id="hits"></div> %>
   <div class="cards">
     <% @movies.each do |movie| %>
       <div class="card-product">
         <img src="<%= movie.image %>" alt="">
         <div class="card-product-infos">
-          <h2><%= movie.title %></h2>
-          <p><%= movie.year %></p>
+          <h4><%= movie.title %></h4>
+          <h2><%= movie.year %></h2>
           <div class="d-flex flex-column">
-            <%= link_to "Plus de détails", movie_path(movie) %>
+            <%= link_to "Plus de détails", movie_path(movie), class: "btn btn-flat" %>
             <%= link_to "Supprimer",
               movie_path(movie),
-              data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr de vouloir supprimer le film ?"}
+              data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr de vouloir supprimer le film ?"},
+              class: "btn btn-flat"
             %>
           </div>
         </div>

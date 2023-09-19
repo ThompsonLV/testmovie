@@ -1,23 +1,30 @@
 <div class="container">
-  <h1><%= @movie.title %> </h1>
-    <p><%= @movie.year %></p>
+  <h1 class="uppercase-text center-text"><%= @movie.title %></h1>
     <div class="card-movie-info">
-      <img src="<%= @movie.image %>" alt="">
-      <div class="movie-genre">
-        <h3>Genres</h3>
-        <% @movie.categories.each do |category| %>
-          <p><%= Genre.find(category.genre_id).content %></p>
+    <img src="<%= @movie.image %>" alt="" class="movie-poster">
+    <div class="movie-info">
+      <div class="movie-short-info">
+        <div class="info">
+          <h4>Genres</h4>
+          <% @movie.categories.each do |category| %>
+            <p><%= Genre.find(category.genre_id).content %></p>
+          <% end %>
+        </div>
+        <div class="info">
+          <h4>Année</h4>
+          <p><%= @movie.year %></p>
+        </div>
+      </div>
+      <h4 class="large-background">Acteurs</h4>
+      <div class="avatars">
+        <% @movie.casts.each do |cast| %>
+          <div class="actor-infos">
+            <img src="<%= Actor.find(cast.actor_id).avatar %>" class="avatar-bordered" alt="">
+            <p class="center-text"><%= Actor.find(cast.actor_id).fullname %></p>
+          </div>
         <% end %>
       </div>
     </div>
-    <h3>Acteurs</h3>
-    <div class="avatars">
-      <% @movie.casts.each do |cast| %>
-        <div class="actor-infos">
-          <img src="<%= Actor.find(cast.actor_id).avatar %>" class="avatar-bordered" alt="">
-          <%= Actor.find(cast.actor_id).fullname %>
-        </div>
-      <% end %>
-    </div>
   </div>
+  <%= link_to "Liste des films", movies_path(), class: "btn btn-ghost-dark"%>
 </div>
