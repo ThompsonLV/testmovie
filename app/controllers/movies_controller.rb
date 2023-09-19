@@ -2,8 +2,11 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: %i[show destroy]
 
   def index
-    # @movies = Movie.all
-    @movies = Movie.page(params[:page]).per(10)
+    @movies = Movie.all
+    # @movies = Movie.page(params[:page]).per(10)
+    if params[:query].present?
+      @movies = Movie.algolia_search(params[:query])
+    end
   end
 
   def show

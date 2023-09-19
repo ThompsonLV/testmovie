@@ -1,7 +1,7 @@
 class Actor < ApplicationRecord
   include AlgoliaSearch
   algoliasearch do
-    attribute :fullname
+    attributes :fullname
   end
 
   Actor.reindex

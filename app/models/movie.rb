@@ -1,10 +1,8 @@
 class Movie < ApplicationRecord
   include AlgoliaSearch
   algoliasearch do
-    attribute :title, :rating, :year
+    attributes :title, :rating, :year
   end
-
-  Movie.reindex
 
   has_many :casts, dependent: :destroy
   has_many :categories, dependent: :destroy

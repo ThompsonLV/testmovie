@@ -7,10 +7,18 @@
 
 
 <div class="container">
-  <%# Recherche Algolia %>
-  <%# <input type="text" id="search-input" data-controller="algolia-search" placeholder="Recherche...">
-  <div id="hits"></div> %>
-  <%= paginate @movies %>
+  <div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: movies_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Entrez un mot clé"
+        %>
+      <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
   <div class="cards">
     <% @movies.each do |movie| %>
       <div class="card-product">
@@ -31,5 +39,4 @@
       </div>
     <% end %>
   </div>
-  <%= paginate @movies %>
 </div>
